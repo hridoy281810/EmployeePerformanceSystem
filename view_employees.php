@@ -175,7 +175,7 @@ $total_pages = ceil($total_records / $limit);
 }
 
 .search-bar input[type="text"]:focus {
-    border-color: #F39C12; /* Gold border on focus */
+    border-color: #F39C12; 
     outline: none;
     box-shadow: 0 2px 8px rgba(243, 156, 18, 0.5);
 }
@@ -193,18 +193,34 @@ $total_pages = ceil($total_records / $limit);
 }
 
 .search-bar button:hover {
-    background-color: #E67E22; /* Slightly darker gold on hover */
+    background-color: #E67E22; 
 }
 
 .search-bar button:active {
-    background-color: #D35400; /* Darker gold on active */
+    background-color: #D35400; 
 }
 
+.add-button {
+            display: inline-block;
+            background-color: #F39C12; 
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+     
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Employee Performance List</h1>
+      <!-- Add Employee Button -->
+      <div class="add-button">
+        <a href="add_employee.php">Add Employee</a>
+    </div>
     <!-- Search Bar -->
     <div class="search-bar">
         <form method="GET">
