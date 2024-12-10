@@ -183,9 +183,7 @@ if (isset($_GET['employee_id'])) {
     <h1>Edit Employee</h1>
     
     <div class="form-container">
-        <?php if ($error_message): ?>
-            <div class="error-message"><?= $error_message; ?></div>
-        <?php endif; ?>
+      
         
         <form method="POST">
             <input type="hidden" name="employee_id" value="<?= $employee['employee_id']; ?>"> <!-- Hidden input for employee_id -->
@@ -197,18 +195,21 @@ if (isset($_GET['employee_id'])) {
             <input type="text" id="designation" name="designation" value="<?= $employee['designation']; ?>" required>
             
             <label for="attendance_rate">Attendance Rate (%):</label>
-            <input type="number" id="attendance_rate" name="attendance_rate" value="<?= $employee['attendance_rate']; ?>" min="0" max="100" required>
+            <input type="number" id="attendance_rate" name="attendance_rate" value="<?= htmlspecialchars($employee['attendance_rate'] ?? ''); ?>">
             <?php if ($attendance_rate_error): ?>
                 <div class="field-error"><?= $attendance_rate_error; ?></div>
             <?php endif; ?>
             
             <label for="average_task_efficiency">Average Task Efficiency (%):</label>
-            <input type="number" id="average_task_efficiency" name="average_task_efficiency" value="<?= $employee['average_task_efficiency']; ?>" min="0" max="100" required>
+            <input type="number" id="average_task_efficiency" name="average_task_efficiency" value="<?= htmlspecialchars($employee['average_task_efficiency'] ?? ''); ?>">
             <?php if ($task_efficiency_error): ?>
                 <div class="field-error"><?= $task_efficiency_error; ?></div>
             <?php endif; ?>
             
             <button type="submit">Update</button>
+            <?php if ($error_message): ?>
+            <div class="error-message"><?= $error_message; ?></div>
+        <?php endif; ?>
         </form>
 
         <a href="view_employees.php" class="back-btn">Back to Employee List</a>
